@@ -41,13 +41,14 @@ void setup() {
     pinMode(GMC2_PWM, OUTPUT);
     pinMode(RLY1, OUTPUT);
     pinMode(RLY2, OUTPUT);
+      lcd.display();
+    digitalWrite(RLY1, HIGH);
+    digitalWrite(RLY2, HIGH);  
 
 }
 
 void loop() {
-  lcd.display();
-  digitalWrite(RLY1, HIGH);
-  digitalWrite(RLY2, HIGH);  
+//
   
   digitalWrite(GMC1_PWM, HIGH);
   digitalWrite(GMC2_PWM, HIGH);
