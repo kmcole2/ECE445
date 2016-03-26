@@ -16,7 +16,7 @@ char * ref_weight[10];
 char * canister[10];
 char * endchar = "*";
 int main(){
-    char sampl[] = "0,2,10,**";
+    char sampl[] = "1,2,10,3,5,**";
     char** tokens;
     printf("ctrl=[%s]\n\n", sampl);
     tokens = str_split(sampl, ',');
@@ -34,7 +34,7 @@ int main(){
         if(strstr(tokens[j+2],endchar) != NULL)
             break;
         j += 2;
-        idx+=2;
+        idx+=1;
     }
 
 printf("array size %d\n", arr_size);
