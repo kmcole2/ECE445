@@ -1,59 +1,112 @@
 <html>
 	<body>
-
-						<form id="form1" type="text">
-							Name: <input type="text" name="In1" id="email" placeholder="Quantity of Flour" />			<br>			
-							Name: <input type="text" name="In2" id="email" placeholder="Quantity of Sugar" /><br>
-							Name: <input type="text" name="In3" id="email1" placeholder="Quantity of Milk" />		<br>				
-							Name: <input type="text" name="In4" id="email1" placeholder="Quantity of Water" /><br>
-						</form>
-
-							<button onclick="printer()"/>PRINT</button>
-
-<!-- 							<div class="4u" type="quantity" name="name" id="email" placeholder="Quantity of Flour" />
-								<select>
+<style>
+.err{
+	color:red;
+}
+</style>
+						<form id="form1" name="form1"type="text">
+							<input type="text" name="In1" id="email" placeholder="Quantity of Flour" />	
+							<select id="units1" name="units1">
 								  <option value="Grams"> 					Grams				</option>
 								  <option value="Cups"> 					Cups				</option>
 								  <option value="Ounces"> 				Ounces			</option>
 								  <option value="Tablespoons"> 		Tablespoons	</option>
 								  <option value="Teaspoons"> 			Teaspoons		</option>
-								</select> -->
+							</select>
+										
+							<input type="text" name="In2" id="email" placeholder="Quantity of Sugar" />
+							<select id="units2" name="units2">
+								  <option value="Grams"> 					Grams				</option>
+								  <option value="Cups"> 					Cups				</option>
+								  <option value="Ounces"> 				Ounces			</option>
+								  <option value="Tablespoons"> 		Tablespoons	</option>
+								  <option value="Teaspoons"> 			Teaspoons		</option>
+							</select>
+
+							<input type="text" name="In3" id="email1" placeholder="Quantity of Milk" />
+							<select id="units3" name="units3">
+								  <option value="Grams"> 					Grams				</option>
+								  <option value="Cups"> 					Cups				</option>
+								  <option value="Ounces"> 				Ounces			</option>
+								  <option value="Tablespoons"> 		Tablespoons	</option>
+								  <option value="Teaspoons"> 			Teaspoons		</option>
+							</select>
+
+							<input type="text" name="In4" id="email1" placeholder="Quantity of Water" />
+							<select id="units4" name="units4">
+								  <option value="Grams"> 					Grams				</option>
+								  <option value="Cups"> 					Cups				</option>
+								  <option value="Ounces"> 				Ounces			</option>
+								  <option value="Tablespoons"> 		Tablespoons	</option>
+								  <option value="Teaspoons"> 			Teaspoons		</option>
+							</select>
+							<p id="input1err" class ="err"></p>
+
+						</form>
+
+							<button onclick="printer()"/>PRINT</button>
+
 							<!-- </div> -->
 							<p id="testout1"></p>
 							<p id="testout2"></p>
 <script>
 	function printer(){
-		console.log("printing time :)");
-		var form1, q1,q2,q3,q4;
+//RETRIEVE QUANTITITES
+		var form1,q1,q2,q3,q4,i;
+		var arrnum = 0;//starting with zero
+		var select1,select2,select3,select4;
+
 		form1=document.getElementById("form1");
-		q1 = form1.elements["In1"].value; //Ingredient1 Quantity
-		q2 = form1.elements["In2"].value;
-		q3 = form1.elements["In3"].value;
-		q4 = form1.elements["In4"].value;
 
-		var arrnum = 4;//starting with "4" subtract if less
-		var i;
-		if(!q1){
-			arrnum--;	
+			q1 = form1.elements["In1"].value; //Ingredient1 Quantity
+			q2 = form1.elements["In2"].value;
+			q3 = form1.elements["In3"].value;
+			q4 = form1.elements["In4"].value;
+
+		//FORM VALIDATION 
+	  var numbers = /^[0-9]+$/;  
+    	if( !q1 && !q2 && !q3 && !q4){
+    		document.getElementById("input1err").innerHTML = "Error: No values entered, form invalid";
+    	}
+    	else if((q1 && !q1.match(numbers)) || (q2 && !q2.match(numbers)) || (q3 && !q3.match(numbers)) || (q4 && !q4.match(numbers))){  
+    		// if(q1console.log("not int");
+		    document.getElementById("input1err").innerHTML ='Please input integer values only';  
+		    document.form1.In1.focus();  
+		    return false;  
+	    }  else {
+
+	    	document.getElementById("input1err").innerHTML = "";
+	    }
+
+	   //If quantity is specified, extract units of measure
+		if(q1){
+			select1 = form1.units1;						//Units of measure
+			arrnum++;
 		}
-		if(!q2){
-			arrnum--;
+		if(q2){
+			select2 = form1.units2;	
+			arrnum++;
+		}		
+		if(q3){
+			select3 = form1.units3;	
+			arrnum++;
 		}
-		if(!q3){
-			arrnum--;
-		}
-		if(!q4){
-			arrnum--;
+		if(q4){
+			select4 = form1.units4;	
+			arrnum++;
 		}
 
-		console.log(q1 + q2 + q3 + q4);
-		console.log("arrnum =" +arrnum);
 
-		// q2=document.getElementById("form1").elements["names"].value;
-		// document.getElementById("testout1").innerHTML = q1;
-		// document.getElementById("testout2").innerHTML = q2;
-		// console.log(q1);
 
+
+		// console.log(select1[select1.selectedIndex].value);
+		// console.log(select2[select2.selectedIndex].value);
+		// console.log(select3[select3.selectedIndex].value);
+		// console.log(select4[select4.selectedIndex].value);
+
+		// console.log(q1 + q2 + q3 + q4);
+		// console.log("arrnum =" +arrnum);
 	}
 </script>
 <!-- 
