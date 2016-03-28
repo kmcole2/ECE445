@@ -1,0 +1,98 @@
+<html>
+	<body>
+
+						<form id="form1" type="text">
+							Name: <input type="text" name="In1" id="email" placeholder="Quantity of Flour" />			<br>			
+							Name: <input type="text" name="In2" id="email" placeholder="Quantity of Sugar" /><br>
+							Name: <input type="text" name="In3" id="email1" placeholder="Quantity of Milk" />		<br>				
+							Name: <input type="text" name="In4" id="email1" placeholder="Quantity of Water" /><br>
+						</form>
+
+							<button onclick="printer()"/>PRINT</button>
+
+<!-- 							<div class="4u" type="quantity" name="name" id="email" placeholder="Quantity of Flour" />
+								<select>
+								  <option value="Grams"> 					Grams				</option>
+								  <option value="Cups"> 					Cups				</option>
+								  <option value="Ounces"> 				Ounces			</option>
+								  <option value="Tablespoons"> 		Tablespoons	</option>
+								  <option value="Teaspoons"> 			Teaspoons		</option>
+								</select> -->
+							<!-- </div> -->
+							<p id="testout1"></p>
+							<p id="testout2"></p>
+<script>
+	function printer(){
+		console.log("printing time :)");
+		var form1, q1,q2,q3,q4;
+		form1=document.getElementById("form1");
+		q1 = form1.elements["In1"].value; //Ingredient1 Quantity
+		q2 = form1.elements["In2"].value;
+		q3 = form1.elements["In3"].value;
+		q4 = form1.elements["In4"].value;
+
+		var arrnum = 4;//starting with "4" subtract if less
+		var i;
+		if(!q1){
+			arrnum--;	
+		}
+		if(!q2){
+			arrnum--;
+		}
+		if(!q3){
+			arrnum--;
+		}
+		if(!q4){
+			arrnum--;
+		}
+
+		console.log(q1 + q2 + q3 + q4);
+		console.log("arrnum =" +arrnum);
+
+		// q2=document.getElementById("form1").elements["names"].value;
+		// document.getElementById("testout1").innerHTML = q1;
+		// document.getElementById("testout2").innerHTML = q2;
+		// console.log(q1);
+
+	}
+</script>
+<!-- 
+							<div class="2u">Sugar</div>
+							<div class="4u$(xsmall)"><input type="text" name="name" id="name" placeholder="Quantity of Sugar" /></div>
+							<div class="4u" type="email" name="email" id="email" placeholder="Quantity of Sugar" />
+								<select>
+								  <option value="saab">Grams</option>
+								  <option value="volvo">Cups</option>
+								  <option value="saab">Ounces</option>
+								  <option value="mercedes">Tablespoons</option>
+								  <option value="audi">Teaspoons</option>
+								</select>
+							</div>
+
+							<div class="2u">Milk</div>
+							<div class="4u$(xsmall)"><input type="email" name="email" id="email" placeholder="Quantity of Milk" /></div>
+							<div class="4u" type="email" name="email" id="email" placeholder="Quantity of Milk" />
+								<select>
+								  <option value="saab">Grams</option>
+								  <option value="volvo">Cups</option>
+								  <option value="saab">Ounces</option>
+								  <option value="mercedes">Tablespoons</option>
+								  <option value="audi">Teaspoons</option>
+								</select>
+							</div>
+
+							<div class="2u">Syrup</div>
+							<div class="4u$(xsmall)"><input type="email" name="email" id="email" placeholder="Quantity of Syrup" /></div>
+							<div class="4u" type="email" name="email" id="email" placeholder="Quantity of Flour" />
+								<select>
+								  <option value="saab">Grams</option>
+								  <option value="volvo">Cups</option>
+								  <option value="saab">Ounces</option>
+								  <option value="mercedes">Tablespoons</option>
+								  <option value="audi">Teaspoons</option>
+								</select>
+							</div>
+ -->
+							
+	</body>
+</html>
