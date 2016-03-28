@@ -53,23 +53,25 @@
 <script>
 	function printer(){
 //RETRIEVE QUANTITITES
-		var form1,q1,q2,q3,q4,i;
+		var form1,i;
+		var q = []; //quantities
 		var arrnum = 0;//starting with zero
 		var select1,select2,select3,select4;
+		var ctrlword;
 
 		form1=document.getElementById("form1");
 
-			q1 = form1.elements["In1"].value; //Ingredient1 Quantity
-			q2 = form1.elements["In2"].value;
-			q3 = form1.elements["In3"].value;
-			q4 = form1.elements["In4"].value;
+			q[0] = form1.elements["In1"].value; //Ingredient1 Quantity
+			q[1] = form1.elements["In2"].value;
+			q[2] = form1.elements["In3"].value;
+			q[3] = form1.elements["In4"].value;
 
 		//FORM VALIDATION 
 	  var numbers = /^[0-9]+$/;  
-    	if( !q1 && !q2 && !q3 && !q4){
+    	if(!q[0] && !q[1] && !q[2] && !q[3]){
     		document.getElementById("input1err").innerHTML = "Error: No values entered, form invalid";
     	}
-    	else if((q1 && !q1.match(numbers)) || (q2 && !q2.match(numbers)) || (q3 && !q3.match(numbers)) || (q4 && !q4.match(numbers))){  
+    	else if((q[0] && !q[0].match(numbers)) || (q[1] && !q[1].match(numbers)) || (q[2] && !q[2].match(numbers)) || (q[3] && !q[3].match(numbers))){  
     		// if(q1console.log("not int");
 		    document.getElementById("input1err").innerHTML ='Please input integer values only';  
 		    document.form1.In1.focus();  
@@ -80,24 +82,34 @@
 	    }
 
 	   //If quantity is specified, extract units of measure
-		if(q1){
+		if(q[0]){
 			select1 = form1.units1;						//Units of measure
 			arrnum++;
 		}
-		if(q2){
+		if(q[1]){
 			select2 = form1.units2;	
 			arrnum++;
 		}		
-		if(q3){
+		if(q[2]){
 			select3 = form1.units3;	
 			arrnum++;
 		}
-		if(q4){
+		if(q[3]){
 			select4 = form1.units4;	
 			arrnum++;
 		}
+ 	 var ctrlword = arrnum-1 + ",";
 
+ 	 for(i = 0; i < 4; i ++){
+ 		if(q[i]){
+				ctrlword += i + "," + q[i] + ",";	
+		}
+ 	}
+	 	ctrlword += "**";
 
+	 	console.log("control word = " + ctrlword);
+ }
+ 
 
 
 		// console.log(select1[select1.selectedIndex].value);
@@ -107,45 +119,8 @@
 
 		// console.log(q1 + q2 + q3 + q4);
 		// console.log("arrnum =" +arrnum);
-	}
 </script>
-<!-- 
-							<div class="2u">Sugar</div>
-							<div class="4u$(xsmall)"><input type="text" name="name" id="name" placeholder="Quantity of Sugar" /></div>
-							<div class="4u" type="email" name="email" id="email" placeholder="Quantity of Sugar" />
-								<select>
-								  <option value="saab">Grams</option>
-								  <option value="volvo">Cups</option>
-								  <option value="saab">Ounces</option>
-								  <option value="mercedes">Tablespoons</option>
-								  <option value="audi">Teaspoons</option>
-								</select>
-							</div>
 
-							<div class="2u">Milk</div>
-							<div class="4u$(xsmall)"><input type="email" name="email" id="email" placeholder="Quantity of Milk" /></div>
-							<div class="4u" type="email" name="email" id="email" placeholder="Quantity of Milk" />
-								<select>
-								  <option value="saab">Grams</option>
-								  <option value="volvo">Cups</option>
-								  <option value="saab">Ounces</option>
-								  <option value="mercedes">Tablespoons</option>
-								  <option value="audi">Teaspoons</option>
-								</select>
-							</div>
-
-							<div class="2u">Syrup</div>
-							<div class="4u$(xsmall)"><input type="email" name="email" id="email" placeholder="Quantity of Syrup" /></div>
-							<div class="4u" type="email" name="email" id="email" placeholder="Quantity of Flour" />
-								<select>
-								  <option value="saab">Grams</option>
-								  <option value="volvo">Cups</option>
-								  <option value="saab">Ounces</option>
-								  <option value="mercedes">Tablespoons</option>
-								  <option value="audi">Teaspoons</option>
-								</select>
-							</div>
- -->
 							
 	</body>
 </html>
