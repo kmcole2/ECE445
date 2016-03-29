@@ -1,0 +1,313 @@
+<!DOCTYPE HTML>
+<!--
+	Highlights by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Highlights by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	</head>
+	<body>
+<style>
+.boxy{
+	width:220px;
+}
+#form1{
+	transform:translate(25px,0px);
+}
+.printer{
+	transform:translate(-23px,30px);
+}
+#input1err{
+	transform:translate(-23px,10px);
+}
+</style>
+		<!-- Header -->
+			<section id="header">
+				<header class="major">
+					<h1>The Ingredient Printer</h1>
+					<p>An added convenience for experimental bakers.</p>
+				</header>
+				<div class="container">
+					<ul class="actions">
+						<li><a href="#one" class="button special scrolly">Begin</a></li>
+					</ul>
+				</div>
+			</section>
+
+		<!-- One -->
+			<section id="one" class="main special">
+				<div class="container">
+					<!-- <span class="image fit primary"><img src="images/pic01.jpg" alt="" /></span> -->
+					<div class="content">
+						<header class="major">
+							<h2>Submit a custom Recipe</h2>
+						</header>
+						<form id="form1" name="form1"type="text">
+						<div class="row uniform">
+							<div class="6u$(xsmall)">
+								<input type="text" name="In1" id="email" placeholder="Quantity of Flour" />	
+							</div>
+							<div class="boxy 6u$(xsmall)" name="email" />
+								<select id="units1" name="units1">
+									  <option value="0">	Grams				</option>
+									  <option value="1">	Cups				</option>
+									  <option value="2">	Ounces			</option>
+									  <option value="3">	Tablespoons	</option>
+									  <option value="4">	Teaspoons		</option>
+									  <option value="5">	Pints				</option>
+									  <option value="6">	Quarts 			</option>
+										<option value="7">	Liters			</option>
+										<option value="8">	Gallons			</option>
+								</select>
+							</div>
+							<div class="6u$(xsmall)">
+								<input type="text" name="In2" id="email" placeholder="Quantity of Sugar" />	
+							</div>
+							<div class="boxy 6u$(xsmall)" name="email" />
+								<select id="units2" name="units2" >
+									  <option value="0">	Grams				</option>
+									  <option value="1">	Cups				</option>
+									  <option value="2">	Ounces			</option>
+									  <option value="3">	Tablespoons	</option>
+									  <option value="4">	Teaspoons		</option>
+									  <option value="5">	Pints				</option>
+									  <option value="6">	Quarts 			</option>
+										<option value="7">	Liters			</option>
+										<option value="8">	Gallons			</option>
+								</select>
+							</div>
+							<div class="6u$(xsmall)">
+								<input type="text" name="In3" id="email" placeholder="Quantity of Milk" />	
+							</div>
+							<div class="boxy 6u$(xsmall)" name="email" />
+								<select id="units3" name="units3">
+									  <option value="0">	Grams				</option>
+									  <option value="1">	Cups				</option>
+									  <option value="2">	Ounces			</option>
+									  <option value="3">	Tablespoons	</option>
+									  <option value="4">	Teaspoons		</option>
+									  <option value="5">	Pints				</option>
+									  <option value="6">	Quarts 			</option>
+										<option value="7">	Liters			</option>
+										<option value="8">	Gallons			</option>
+								</select>
+							</div>
+							<div class="6u$(xsmall)">
+								<input type="text" name="In4" id="email" placeholder="Quantity of Water" />	
+							</div>
+							<div class="boxy 6u$(xsmall)" name="email" />
+								<select id="units4" name="units4">
+									  <option value="0">	Grams				</option>
+									  <option value="1">	Cups				</option>
+									  <option value="2">	Ounces			</option>
+									  <option value="3">	Tablespoons	</option>
+									  <option value="4">	Teaspoons		</option>
+									  <option value="5">	Pints				</option>
+									  <option value="6">	Quarts 			</option>
+										<option value="7">	Liters			</option>
+										<option value="8">	Gallons			</option>
+								</select>
+							</div>
+				</div>
+				<div>
+					<ul class="actions">
+						<li><a href="#one" class="printer button special scrolly" onclick="printer()">Print</a></li>
+					</ul>
+				</div>
+						<p id="input1err" style="text-align:center; color:red;" class ="err"></p>
+					</form>
+					</div>
+				</div>
+			</section>
+
+<script>
+// Currently Supported Units of measure: 
+// g = g
+// 125g = 1cup
+// 28.3g=oz
+// 15g = Tbsp
+
+// 2cup=1pint
+// 2pint=1Liter
+// 4Quart = 1Gal
+//4L = 1Gal
+//
+												 //g, cups,   oz,     Tbsp,    tsp,    pint,     quart,     liter, gallon
+	var flour_multiplier =  [1, 125,    28.35,  7.5,     3.13,   250,      500,       500,   2000];//Unit multiplier for
+	var sugar_multiplier =  [1, 200,    28.35,  14,      4,      100,      200,       200,   800];	 
+	var milk_multiplier =  	[1, 236.59, 29.5735,14.7868, 4.9289, 473.1765, 1000.0018, 946.353,3785.412];
+	var water_multiplier =  [1, 236.59, 29.5735,14.7868, 4.9289, 473.1765, 1000.0018, 946.353,3785.412];	 
+	var units =["Grams", "Cups","Ounces","Tablespoons","Teaspoons","Pints","Quarts", "Liters", "Gallons"];
+	
+	function printer(){
+//RETRIEVE QUANTITITES
+		var form1,i;
+		var q = []; //quantities
+		var arrnum = 0;//starting with zero
+		var select1,select2,select3,select4;
+		var ctrlword;
+
+		form1=document.getElementById("form1");
+
+			q[0] = form1.elements["In1"].value; //Ingredient1 Quantity
+			q[1] = form1.elements["In2"].value;
+			q[2] = form1.elements["In3"].value;
+			q[3] = form1.elements["In4"].value;
+
+		//FORM VALIDATION 
+	  var numbers = /^[0-9]+$/;  
+
+	 		//if no input, output error to user
+    	if(!q[0] && !q[1] && !q[2] && !q[3]){
+    		document.getElementById("input1err").innerHTML = "Error: No values entered, form invalid";
+    	}
+    	//if input values aren't integers, output error to user 
+    	else if((q[0] && !q[0].match(numbers)) || (q[1] && !q[1].match(numbers)) || (q[2] && !q[2].match(numbers)) || (q[3] && !q[3].match(numbers))){  
+    		// if(q1console.log("not int");
+		    document.getElementById("input1err").innerHTML ='Please input integer values only';  
+		    document.form1.In1.focus();  
+		    return false;  
+	    }  
+	   //If quantity is specified, extract units of measure
+	    else {
+				if(q[0]){
+					select1 = form1.units1;						//Units of measure
+					q[0] = parseInt(q[0]*flour_multiplier[select1[select1.selectedIndex].value]);
+					arrnum++;
+				}
+				if(q[1]){
+					select2 = form1.units2;	
+					q[1] = parseInt(q[1]*sugar_multiplier[select2[select2.selectedIndex].value]);
+					arrnum++;
+				}		
+				if(q[2]){
+					select3 = form1.units3;	
+					q[2] = parseInt(q[2]*milk_multiplier[select3[select3.selectedIndex].value]);
+					arrnum++;
+				}
+				if(q[3]){
+					select4 = form1.units4;	
+					q[3] = parseInt(q[3]*water_multiplier[select4[select4.selectedIndex].value]);
+					arrnum++;
+				}
+		 	 var ctrlword = arrnum-1 + ",";
+
+		 	 for(i = 0; i < 4; i ++){
+		 		if(q[i]){
+						ctrlword += i + "," + q[i] + ",";	
+					}
+			 	}
+			 	ctrlword += "**";
+				console.log(units[select4[select4.selectedIndex].value]);
+			 	console.log("control word = " + ctrlword);
+	    	document.getElementById("input1err").innerHTML = "";
+	    }
+
+
+ }
+</script>
+
+		<!-- Two -->
+			<section id="two" class="main special">
+				<div class="container">
+					<div class="content">
+						<header class="major">
+							<h2>Select Recipe</h2>
+					<span class="image fit primary"><img src="images/pic02.jpg" alt="" /></span>
+					<span class="image fit primary"><img src="images/pic02.jpg" alt="" /></span>
+						</header>
+						<p>Submit a recipe from preapproved vendors.</p>
+							<div class="12u"><input type="text" name="name" id="name" placeholder="Enter URL..." /></div>
+						<ul class="icons-grid">
+							<li style="transform:translate(0px,20px);">
+								<a href="http://www.epicurious.com/">
+										<img src="images/Epicurious.png" style = "width:180px;" alt="" />
+								</a>
+							</li>
+							<li style="height:148px">
+								<a href="http://allrecipes.com/">
+									<img src="images/allrecipes.png" style = "width:180px;" alt=""/>
+								</a>
+							</li>
+							<li>
+								<a href="http://www.yummly.com/">
+									<img src="images/Yummly.png" style = "height:50px; width:160px" alt=""/>
+								</a>
+							</li>
+							<li style="transform:translate(0px,12px);">
+								<a href="http://www.bonappetit.com/recipes">
+									<img src="images/bonappetit.png" style = "width:180px;" alt=""/>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<a href="#three" class="goto-next scrolly">Next</a>
+				</div>
+			</section>
+
+		<!-- Three -->
+			<section id="three" class="main special">
+				<div class="container">
+					<span class="image fit primary"><img src="images/pic03.jpg" alt="" /></span>
+					<div class="content">
+						<header class="major">
+							<h2>Our Mission</h2>
+						</header>
+						<p>Our mission is to provide the experimental baker with the tools necessary to measure ingredients with more accuracy than can be afforded by traditional household cups and spoons. Prompted with the ingredient quantities, the device will output precise amounts of specified ingredients into a single collecting container for clean and simple baking prep. 
+</p>
+					</div>
+					<a href="#footer" class="goto-next scrolly">Next</a>
+				</div>
+			</section>
+
+			<section id="footer">
+				<div class="container">
+					<header class="major">
+						<h2>Get in contact.</h2>
+					</header>
+					<form method="post" action="#">
+						<div class="row uniform">
+							<div class="6u 12u$(xsmall)"><input type="text" name="name" id="name" placeholder="Name" /></div>
+							<div class="6u$ 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="Email" /></div>
+							<div class="12u$"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
+							<div class="12u$">
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" class="special" /></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div>
+				<footer>
+					<ul class="icons">
+						<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon alt fa-dribbble"><span class="label">Dribbble</span></a></li>
+						<li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; 2016 The Ingredient Printer<li><a href="#footer">Get In Contact</a></li><li><a href="#three">Our Mission</a></li>
+					</ul>
+				</footer>
+			</section>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
