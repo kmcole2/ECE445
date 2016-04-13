@@ -20,12 +20,12 @@ button {
     -webkit-appearance:none;
     font-size: 1.2em;
 }
-
+/*
 input[type=text] {
     font-size: 0.6em;
     width: 45%;
 }
-
+*/
 #mainPage {
     text-align:center;
 }

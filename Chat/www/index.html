@@ -4,7 +4,9 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,  target-densitydpi=device-dpi" />
-
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Bluetooth Serial Chat</title>
     </head>
@@ -26,91 +28,91 @@
             </div>
             <div id="statusDiv"></div>
         </div>
+
+
         <div class="container">
-                    <!-- <span class="image fit primary"><img src="images/pic01.jpg" alt="" /></span> -->
-                    <div class="content">
-                        <header class="major">
-                            <h2>Submit a custom Recipe</h2>
-                        </header>
-                        <form id="form1" name="form1"type="text">
-                        <div class="row uniform">
-                            <div class="6u$(xsmall)">
-                                <input type="text" name="In1" id="email" placeholder="Quantity of Flour" /> 
-                            </div>
-                            <div class="boxy 6u$(xsmall)" name="email" />
-                                <select id="units1" name="units1">
-                                      <option value="0">    Grams               </option>
-                                      <option value="1">    Cups                </option>
-                                      <option value="2">    Ounces          </option>
-                                      <option value="3">    Tablespoons </option>
-                                      <option value="4">    Teaspoons       </option>
-                                      <option value="5">    Pints               </option>
-                                      <option value="6">    Quarts          </option>
-                                        <option value="7">  Liters          </option>
-                                        <option value="8">  Gallons         </option>
-                                </select>
-                            </div>
-                            <input type="checkbox" id="pause1">Pause<br>
-                            <div class="6u$(xsmall)">
-                                <input type="text" name="In2" id="email" placeholder="Quantity of Sugar" /> 
-                            </div>
-                            <div class="boxy 6u$(xsmall)" name="email" />
-                                <select id="units2" name="units2" >
-                                      <option value="0">    Grams               </option>
-                                      <option value="1">    Cups                </option>
-                                      <option value="2">    Ounces          </option>
-                                      <option value="3">    Tablespoons </option>
-                                      <option value="4">    Teaspoons       </option>
-                                      <option value="5">    Pints               </option>
-                                      <option value="6">    Quarts          </option>
-                                        <option value="7">  Liters          </option>
-                                        <option value="8">  Gallons         </option>
-                                </select>
-                            </div>
-                            <input type="checkbox" id="pause2">Pause<br>
-                            <div class="6u$(xsmall)">
-                                <input type="text" name="In3" id="email" placeholder="Quantity of Milk" />  
-                            </div>
-                            <div class="boxy 6u$(xsmall)" name="email" />
-                                <select id="units3" name="units3">
-                                      <option value="0">    Grams               </option>
-                                      <option value="1">    Cups                </option>
-                                      <option value="2">    Ounces          </option>
-                                      <option value="3">    Tablespoons </option>
-                                      <option value="4">    Teaspoons       </option>
-                                      <option value="5">    Pints               </option>
-                                      <option value="6">    Quarts          </option>
-                                        <option value="7">  Liters          </option>
-                                        <option value="8">  Gallons         </option>
-                                </select>
-                            </div>
-                            <input type="checkbox" id="pause3">Pause<br>
-                            <div class="6u$(xsmall)">
-                                <input type="text" name="In4" id="email" placeholder="Quantity of Water" /> 
-                            </div>
-                            <div class="boxy 6u$(xsmall)" name="email" />
-                                <select id="units4" name="units4">
-                                      <option value="0">    Grams               </option>
-                                      <option value="1">    Cups                </option>
-                                      <option value="2">    Ounces          </option>
-                                      <option value="3">    Tablespoons </option>
-                                      <option value="4">    Teaspoons       </option>
-                                      <option value="5">    Pints               </option>
-                                      <option value="6">    Quarts          </option>
-                                        <option value="7">  Liters          </option>
-                                        <option value="8">  Gallons         </option>
-                                </select>
-                            </div>
-                            <input type="checkbox" id="pause4">Pause<br>
+            <header class="major">
+                <h2>Submit a custom Recipe</h2>
+            </header>
+            <form id="form1" name="form1"type="text">
+            <div class="row uniform">
+                <div class="6u$(xsmall)">
+                    <input type="text" name="In1" id="email" placeholder="Quantity of Flour" /> 
                 </div>
-                <div>
-                    <ul class="actions">
-                        <li><a href="#one" class="printer button special scrolly" onclick="printer()">Print</a></li>
-                    </ul>
+                <div class="boxy 6u$(xsmall)" name="email" />
+                    <select id="units1" name="units1">
+                          <option value="0">    Grams               </option>
+                          <option value="1">    Cups                </option>
+                          <option value="2">    Ounces          </option>
+                          <option value="3">    Tablespoons </option>
+                          <option value="4">    Teaspoons       </option>
+                          <option value="5">    Pints               </option>
+                          <option value="6">    Quarts          </option>
+                            <option value="7">  Liters          </option>
+                            <option value="8">  Gallons         </option>
+                    </select>
                 </div>
-                        <p id="input1err" style="text-align:center; color:red;" class ="err"></p>
-                    </form>
-                    </div>
+                <input type="checkbox" id="pause1">Pause<br>
+                <div class="6u$(xsmall)">
+                    <input type="text" name="In2" id="email" placeholder="Quantity of Sugar" /> 
+                </div>
+                <div class="boxy 6u$(xsmall)" name="email" />
+                    <select id="units2" name="units2" >
+                          <option value="0">    Grams               </option>
+                          <option value="1">    Cups                </option>
+                          <option value="2">    Ounces          </option>
+                          <option value="3">    Tablespoons </option>
+                          <option value="4">    Teaspoons       </option>
+                          <option value="5">    Pints               </option>
+                          <option value="6">    Quarts          </option>
+                            <option value="7">  Liters          </option>
+                            <option value="8">  Gallons         </option>
+                    </select>
+                </div>
+                <input type="checkbox" id="pause2">Pause<br>
+                <div class="6u$(xsmall)">
+                    <input type="text" name="In3" id="email" placeholder="Quantity of Milk" />  
+                </div>
+                <div class="boxy 6u$(xsmall)" name="email" />
+                    <select id="units3" name="units3">
+                          <option value="0">    Grams               </option>
+                          <option value="1">    Cups                </option>
+                          <option value="2">    Ounces          </option>
+                          <option value="3">    Tablespoons </option>
+                          <option value="4">    Teaspoons       </option>
+                          <option value="5">    Pints               </option>
+                          <option value="6">    Quarts          </option>
+                          <option value="7">  Liters          </option>
+                          <option value="8">  Gallons         </option>
+                    </select>
+                </div>
+                <input type="checkbox" id="pause3">Pause<br>
+                <div class="6u$(xsmall)">
+                    <input type="text" name="In4" id="email" placeholder="Quantity of Water" /> 
+                </div>
+                <div class="boxy 6u$(xsmall)" name="email" />
+                    <select id="units4" name="units4">
+                          <option value="0">    Grams               </option>
+                          <option value="1">    Cups                </option>
+                          <option value="2">    Ounces          </option>
+                          <option value="3">    Tablespoons </option>
+                          <option value="4">    Teaspoons       </option>
+                          <option value="5">    Pints               </option>
+                          <option value="6">    Quarts          </option>
+                          <option value="7">  Liters          </option>
+                          <option value="8">  Gallons         </option>
+                    </select>
+                </div>
+                <input type="checkbox" id="pause4">Pause<br>
+    </div>
+    <div>
+        <ul class="actions">
+            <li><a href="#one" class="printer button special scrolly" onclick="printer()">Print</a></li>
+        </ul>
+    </div>
+            <p id="input1err" style="text-align:center; color:red;" class ="err"></p>
+        </form>
+        </div>
                 </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
@@ -138,9 +140,10 @@
     
 
     function printer(){
-//RETRIEVE QUANTITITES
+    //RETRIEVE QUANTITITES
         var form1,i;
-        var q = []; //quantities
+        var q = [];    //quantities
+        var pause = [];//pause
         var arrnum = 0;//starting with zero
         var select1,select2,select3,select4;
         var ctrlword;
@@ -153,9 +156,9 @@
             q[3] = form1.elements["In4"].value;
 
         //FORM VALIDATION 
-      var numbers =  /^[-+]?[0-9]+\.[0-9]+$/; // /^[0-9]+$/;
+        var numbers =  /^[-+]?[0-9]+\.[0-9]+$/; // /^[0-9]+$/;
 
-            //if no input, output error to user
+        //if no input, output error to user
         if(!q[0] && !q[1] && !q[2] && !q[3]){
             document.getElementById("input1err").innerHTML = "Error: No values entered, form invalid";
         }
@@ -173,6 +176,9 @@
                     select1 = form1.units1;                     //Units of measure
                     q[0] = parseInt(q[0]*flour_multiplier[select1[select1.selectedIndex].value]);
                     arrnum++;
+                    if(document.getElementById("pause1").checked){
+
+                    }
                 }
                 if(q[1]){
                     select2 = form1.units2; 
@@ -193,7 +199,11 @@
 
              for(i = 0; i < 4; i ++){
                 if(q[i]){
-                        ctrlword += i + "," + q[i] + ",";   
+                    var j = 1 + i;
+                        if(document.getElementById("pause"+j).checked){
+                            var p = "P";
+                        } else {p  = "N";}
+                        ctrlword += i + "," + q[i] + "," + p + ",";   
                     }
                 }
                 ctrlword += "**";
