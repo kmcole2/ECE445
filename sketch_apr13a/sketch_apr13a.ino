@@ -1,7 +1,7 @@
-//"3,2,5,N,2,5,N,2,5,N,2,5,N,**";
-//"2,3,10,P,1,2,P,2,3,P,**";
-//"1,2,10,P,2,10,P,**"
-//"0,2,10,P,**"
+//"3,2,5,N,2,5,N,2,5,N,2,5,N,*";
+//"2,3,10,P,1,2,P,2,3,P,*";
+//"1,2,10,P,2,10,P,*"
+//"0,2,10,P,*"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,19 +10,24 @@
 //char** str_split(char* a_str, const char a_delim);
 int arr_size;
 int flag = 1;
-char ref_weight[10];
-char canister[10];
+String ref_weight[10];
+String container[10];
+String sampl = "2,3,10,P,1,2,P,2,3,P,*";
+String tokens[20];
+
 char * endchar = "*";
 String Strings;
+boolean recipe_ready = 0;
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(57600);
 }
 
+
 void loop() {
   // put your main code here, to run repeatedly:
-      String sampl = "0,2,10,P,*";  
-      String tokens[20];
+
 
       int commaIndex = sampl.indexOf(',');
       int secondCommaIndex = 1; 
@@ -41,7 +46,7 @@ void loop() {
         Serial.print("\n");     
                 Serial.print("\n");       
         
-      for(int i = 1; i < 10; i ++){
+      for(int i = 0; i < 10; i ++){
         commaIndex = secondCommaIndex + 1;
         secondCommaIndex = sampl.indexOf(',',commaIndex);
         Serial.print(" firstIdx = ");
@@ -52,87 +57,58 @@ void loop() {
         Serial.print("\n");
         value = sampl.substring(commaIndex, secondCommaIndex);
         Serial.print(value);
+        tokens[i] = value;
         if(value == "*"){
           break;
          }
-        tokens[i] = value;//.toInt();  
-        
+
 //        Serial.print(tokens[i]);
         Serial.print(" \n");
       }
-      Serial.print("breaks");
-//validate tokens 
-for(int j = 0; j < 10; j++){
-  Serial.print(tokens[j]);
+      Serial.print("breaks ");        Serial.print(" \n");
+
+
+
+  //validate tokens 
+  //load alternate values into the arrays
+  for(int j = 0; j < 20; j++){
+      Serial.print(tokens[j]);
+      Serial.print(" ");
+  }    
+  Serial.print("individ arr size = ");
+  Serial.print((arr_size*3 + 2)/3);
+    Serial.print("\n");  
+    
+  for(int j = 0; j < (arr_size*3 + 2)/3 ; j++){
+    Serial.print(j);
+    Serial.print("idx1 = ");
+    Serial.print(j*2);
+    Serial.print("\n");
+    Serial.print("idx2 = ");
+    Serial.print(j*2 + 1);   
+        Serial.print("\n"); 
+    container[j*2] = tokens[j*3];
+    ref_weight[j*2] = tokens[j*3+1];
+    container[j*2+1] = tokens[j*3+2];
+    ref_weight[j*2+1] = tokens[j*3+2];
+  }    
+    Serial.print("\n");
+
+//print out container
+//10,P,2,P,3,P
+  for(int k = 0; k < (arr_size*2); k++){
+    Serial.print(ref_weight[k]);
+    Serial.print(" ");
+  }    
+     Serial.print("\n");
+
+//print out ref_weight
+//3,P,1,P,2,P
+  for(int l = 0; l < (arr_size*2); l++){
+    Serial.print(container[l]);
+    Serial.print(" ");
+  }    
+  
+  delay(10000);  //10 seconds ?
 }
-      
-      //load alternate values into the arrays 
-      
 
-delay(10000);
-}
-
-
-   
-//
-//
-//printf("array size %d\n", arr_size);
-//
-//int index;
-//printf("canister: [");
-//for( index = 0; index <arr_size; index++){
-//        printf( "%s,", canister[index] );
-//   }
-//        printf( "]\n" );
-//printf("ref_weight: [");
-//for( index = 0; index <arr_size; index++){
-//        printf( "%s,", ref_weight[index] );
-//   }
-//       Serial.print( "]\n" );
-
-
-char** str_split(char* a_str, const char a_delim){
-//      Serial.write(a_str);
-    char** result    = 0;
-    size_t count     = 0;
-    char* tmp        = a_str;
-    char* last_comma = 0;
-    char delim[2];
-    delim[0] = a_delim;
-    delim[1] = 0;
-
-    /* Count how many elements will be extracted. */
-    while (*tmp)
-    {
-        if (a_delim == *tmp)
-        {
-            count++;
-            last_comma = tmp;
-        }
-        tmp++;
-    }
-
-    /* Add space for trailing token. */
-    count += last_comma < (a_str + strlen(a_str) - 1);
-
-    /* Add space for terminating null string so caller
-       knows where the list of returned strings ends. */
-    count++;
-
-    if (result)
-    {
-        size_t idx  = 0;
-        char* token = strtok(a_str, delim);
-
-        while (token)
-        {
-            assert(idx < count);
-            *(result + idx++) = strdup(token);
-            token = strtok(0, delim);
-        }
-        assert(idx == count - 1);
-        *(result + idx) = 0;
-    }
-
-    return result;
-}
