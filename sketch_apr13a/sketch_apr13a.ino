@@ -37,62 +37,23 @@ void loop() {
       Strings = value; 
       arr_size = Strings.toInt() + 1;
 
-      Serial.print("arr size = ");
-      Serial.print(arr_size);
-      Serial.print("\n");
-
-        Serial.print(" firstComma = ");
-        Serial.print(commaIndex); 
-        Serial.print("\n");     
-                Serial.print("\n");       
-        
+      Serial.print("arr size = "); Serial.print(arr_size); Serial.print("\n");
+     
       for(int i = 0; i < 10; i ++){
         commaIndex = secondCommaIndex + 1;
         secondCommaIndex = sampl.indexOf(',',commaIndex);
-        Serial.print(" firstIdx = ");
-        Serial.print(commaIndex); 
-        Serial.print("\n");       
-        Serial.print(" secondIdx = ");
-        Serial.print(secondCommaIndex);
-        Serial.print("\n");
         value = sampl.substring(commaIndex, secondCommaIndex);
-        Serial.print(value);
         tokens[i] = value;
-        if(value == "*"){
-          break;
-         }
-
-//        Serial.print(tokens[i]);
-        Serial.print(" \n");
+        if(value == "*") break;
       }
-      Serial.print("breaks ");        Serial.print(" \n");
-
-
-
-  //validate tokens 
-  //load alternate values into the arrays
-  for(int j = 0; j < 20; j++){
-      Serial.print(tokens[j]);
-      Serial.print(" ");
-  }    
-  Serial.print("individ arr size = ");
-  Serial.print((arr_size*3 + 2)/3);
-    Serial.print("\n");  
+      Serial.print("breaks "); Serial.print(" \n");
     
   for(int j = 0; j < (arr_size*3 + 2)/3 ; j++){
-    Serial.print(j);
-    Serial.print("idx1 = ");
-    Serial.print(j*2);
-    Serial.print("\n");
-    Serial.print("idx2 = ");
-    Serial.print(j*2 + 1);   
-        Serial.print("\n"); 
     container[j*2] = tokens[j*3];
     ref_weight[j*2] = tokens[j*3+1];
     container[j*2+1] = tokens[j*3+2];
     ref_weight[j*2+1] = tokens[j*3+2];
   }    
-    Serial.print("\n");
 
 //print out container
 //10,P,2,P,3,P
@@ -108,7 +69,7 @@ void loop() {
     Serial.print(container[l]);
     Serial.print(" ");
   }    
-  
-  delay(10000);  //10 seconds ?
+  Serial.print(" \n");
+  delay(10000);  //10 seconds
 }
 
