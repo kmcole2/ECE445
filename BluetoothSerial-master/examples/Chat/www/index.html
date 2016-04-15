@@ -50,8 +50,7 @@
                                       <option value="8">  Gallons               </option>
                                 </select>
                             </div>
-                <!-- <input type="checkbox" id="pause2">Pause<br> -->
-
+                <input type="checkbox" id="pause1">Pause<br>
                             <div class="6u$(xsmall)">
                                 <input type="text" name="In2" id="email" placeholder="Quantity of Sugar" /> 
                             </div>
@@ -68,8 +67,8 @@
                                         <option value="8">  Gallons         </option>
                                 </select>
                             </div>
-                <!-- <input type="checkbox" id="pause2">Pause<br> -->
-                            
+                <input type="checkbox" id="pause2">Pause<br>
+
                             <div class="6u$(xsmall)">
                                 <input type="text" name="In3" id="email" placeholder="Quantity of Milk" />  
                             </div>
@@ -86,8 +85,8 @@
                                         <option value="8">  Gallons         </option>
                                 </select>
                             </div>
-                <!-- <input type="checkbox" id="pause2">Pause<br> -->
-                            
+                <input type="checkbox" id="pause3">Pause<br>
+
                             <div class="6u$(xsmall)">
                                 <input type="text" name="In4" id="email" placeholder="Quantity of Water" /> 
                             </div>
@@ -104,8 +103,8 @@
                                         <option value="8">  Gallons         </option>
                                 </select>
                             </div>
-                <!-- <input type="checkbox" id="pause2">Pause<br> -->
-                            
+                <input type="checkbox" id="pause4">Pause<br>
+
                 </div>
                 <div>
                     <ul class="actions">
@@ -226,12 +225,17 @@
 
              for(i = 0; i < 4; i ++){
                 if(q[i]){
-                        ctrlword += i + "," + q[i] + ",";   
+                  var j = 1 + i;
+                    if(document.getElementById("pause"+j).checked){
+                        var p = "P";
+                    } else {p  = "N";}
+                    ctrlword += i + "," + q[i] + "," + p + ",";   
                     }
                 }
                 ctrlword += "*";
-                console.log(units[select1[select1.selectedIndex].value]);
-                console.log("control word = " + ctrlword);
+                // console.log(units[select1[select1.selectedIndex].value]);
+                // console.log("control word = " + ctrlword);
+                // console.log("pause val = " + document.getElementById("pause1").checked);
             document.getElementById("input1err").innerHTML = "control word = " + ctrlword;
 
             var success = function() {
