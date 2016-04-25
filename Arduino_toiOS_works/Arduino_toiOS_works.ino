@@ -1,41 +1,57 @@
 /*
-  Serial Event example
+Send ctrl word from ios form and decodes for control*/
+//SAMPLE ControlWords 
+//"3,2,5,N,2,5,P,2,5,N,2,5,N,*";
+//"2,3,10,P,1,2,P,2,3,P,*";
+//"1,2,10,P,2,10,P,*"
+//"0,2,10,P,*"
 
- When new serial data arrives, this sketch adds it to a String.
- When a newline is received, the loop prints the string and
- clears it.
+//P = PAUSE
+//N = NO PAUSE
 
- A good test for this is to try it with a GPS receiver
- that sends out NMEA 0183 sentences.
+#include <SimpleTimer.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <String.h>
+#include <assert.h>
 
- Created 9 May 2011
- by Tom Igoe
-
- This example code is in the public domain.
-
- http://www.arduino.cc/en/Tutorial/SerialEvent
-
- */
-
-String inputString = "";         // a string to hold incoming data
-boolean stringComplete = false;  // whether the string is complete
+String ref_weight[10];//reference weight
+String container[10]; //container 0,1,2,3
+String tokens[20];    //buffer 
+String ctrlword = "";           // a string to hold incoming data
+boolean stringComplete = false; // whether the string is complete
+boolean recipe_ready = 0;       //set to 1 when ctrlword is decoded
+boolean control_ready  = 1;     //set to 1 when dispense is completed
+char delimiter = ',';
+unsigned long timestart;
+unsigned long timeend;
+unsigned long time;
+int time_flag = 0;
 
 void setup() {
-  // initialize serial:
-  Serial.begin(57600);
-  // reserve 200 bytes for the inputString:
-  inputString.reserve(200);
-}
+  Serial.begin(57600);    // initialize serial:
+  ctrlword.reserve(500);  // reserve 200 bytes for the inputString:
+} 
 
 void loop() {
-  // print the string when a newline arrives:
+  time = millis();
+
   if (stringComplete) {
-    Serial.println(inputString);
-    // clear the string:
-    inputString = "";
-    stringComplete = false;
+    Serial.println(ctrlword);
+    Serial.print("[string printed at time:"); Serial.print(time); Serial.println(" ms] ");
+
+    if(control_ready == 1){
+      ParseCtrlWord(ctrlword);
+    }
+    
+    ctrlword = "";            // RESET, clear string/false
+    stringComplete = false;   
+   
+    /*TO DO Controls*/
+    
   }
-  
+
 }
 
 /*
@@ -45,15 +61,79 @@ void loop() {
  response.  Multiple bytes of data may be available.
  */
 void serialEvent() {
-  while (Serial.available()) {
-    // get the new byte:
-    char inChar = (char)Serial.read();
-    // add it to the inputString:
-    inputString += inChar;
-    // if the incoming character is a newline, set a flag
-    // so the main loop can do something about it:
-    if (inChar == '*') {
+  while (Serial.available() > 0) {
+      if(time_flag == 0){
+        Serial.print("[button initiated at time: ");
+        Serial.print(time);
+        Serial.print("ms] ");
+        time_flag = 1;
+      }
+    char inChar = (char)Serial.read();   // get the new byte:
+    ctrlword += inChar;                  // add it to the ctrlword:
+    if (inChar == '*') {  
       stringComplete = true;
+      time_flag = 0;
     }
   }
 }
+
+void ParseCtrlWord(String ctrl){
+  int commaIndex = ctrl.indexOf(delimiter);
+  int secondCommaIndex = 1; 
+
+  //extract array size
+  String value = ctrl.substring(0, commaIndex);
+  int arr_size = value.toInt() + 1;
+  
+  Serial.print("each array size will should be = "); Serial.print(arr_size*2+1); Serial.print(" \n");
+  
+      for(int i = 0; i < arr_size*3 ; i ++){
+        commaIndex = secondCommaIndex + 1;
+        secondCommaIndex = ctrl.indexOf(delimiter,commaIndex);
+        value = ctrl.substring(commaIndex, secondCommaIndex);
+        tokens[i] = value;
+        if(value == "*") break;
+
+        
+      }
+
+  //validate tokens 
+  //load alternate values into the arrays
+     Serial.print("tokens array = ");
+  for(int j = 0; j < 20; j++){
+      Serial.print(tokens[j]);
+  }    
+      Serial.print(" \n");
+
+  //tokens= "2,5,N,2,5,N,2,5,N,2,5,N,*";
+  for(int j = 0; j < 4; j++){
+    container[j*2] = tokens[j*3];
+    ref_weight[j*2] = tokens[j*3+1];
+    container[j*2+1] = tokens[j*3+2];
+    ref_weight[j*2+1] = tokens[j*3+2];
+  }    
+  container[arr_size*2] = "*";
+  ref_weight[arr_size*2] = "*";
+
+//print out ref_weight
+//3,P,1,P,2,P
+Serial.print("reference weight = ");
+  for(int l = 0; l < (arr_size*2)+1; l++){
+    Serial.print(container[l]);
+    Serial.print(" ");
+  }    
+  Serial.print(" \n");
+
+  
+//print out container
+//10,P,2,P,3,P
+Serial.print("container = ");
+  for(int k = 0; k < (arr_size*2)+1; k++){
+    Serial.print(ref_weight[k]);
+    Serial.print(" ");
+  }    
+  Serial.print("\n");
+  Serial.print(" \n");
+  recipe_ready = 1;
+  }
+
