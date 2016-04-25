@@ -3,33 +3,48 @@
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,  target-densitydpi=device-dpi" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
 
         <!-- <link rel="stylesheet" type="text/css" href="css/main.css" /> -->
 <!-- Latest compiled and minified CSS -->
 
         <!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
 
-  <!--       <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
         <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/> -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/primary.css" />
         <!-- Latest compiled and minified CSS -->
         <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
                 <title>Bluetooth Serial Chat</title>
                 <style>
-                .btn span.glyphicon {         
+
+
+      .btn span.glyphicon {         
   opacity: 0;       
 }
 .btn.active span.glyphicon {        
   opacity: 1;       
 }
-      glyphicon{
-          font-size: 3px;
-          height:5px;
-      }
+      input {
+    line-height: 2em;
+}
+select, input{
+   /*margin: 50px;*/
+    border: 1px solid #111;
+   background: transparent;
+   /*width: 140px !important; */
+   padding: 3px 3px 3px 3px;
+   font-size: 16px;
+   border: 1px solid #ccc;
+   height: 30px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+} 
+
                 </style>
     </head>
     <body>
@@ -61,8 +76,7 @@
                     <form id="form1" name="form1"type="text">
                     <div class="row uniform">
                         <div class="col-sm-" style="transform: translate(0px,0px);">
-                            <!-- <input type="checkbox" id="pause1">Pause</input> -->
-                            <input type="text" name="In1" id="email" style="width:128px; height:35px; transform: translate(0px,-2px);" placeholder="Quantity of Flour" /> 
+                            <input type="text" name="In1" id="email" style="width:155px; transform: translate(0px,-2px);" placeholder="Quantity of Baking Soda" /> 
                             <select id="units1" name="units1" style="width:130px; ">
                                   <option value="0">    Grams               </option>
                                   <option value="1">    Cups                </option>
@@ -82,11 +96,7 @@
                             </div>
                         </div><br>
                         <div class="6u$(xsmall)" style="transform: translate(0px,0px);">
-
-                            <!-- <div class ="btn btn-primary"><input type="checkbox" id="pause2">Pause</input> -->
-                            <!-- </div> -->
-
-                            <input type="text" name="In2" id="email"style="width:128px; height:35px; transform: translate(0px,-2px);" placeholder="Quantity of Sugar" /> 
+                            <input type="text" name="In2" id="email"style="width:155px; transform: translate(0px,-2px);" placeholder="Quantity of Sugar" /> 
                             <select id="units2" name="units2"  style="width:130px ">
                                   <option value="0">    Grams               </option>
                                   <option value="1">    Cups                </option>
@@ -106,8 +116,7 @@
                             </div>
                             </div><br>
                         <div class="6u$(xsmall)" style="transform: translate(0px,0px);">
-                            <!-- <input type="checkbox" id="pause3">Pause</input> -->
-                            <input type="text" name="In3" id="email"style="width:128px; height:35px; transform: translate(0px,-2px);" placeholder="Quantity of Milk" />  
+                            <input type="text" name="In3" id="email"style="width:155px; transform: translate(0px,-2px);" placeholder="Quantity of Water" />  
                             <select id="units3" name="units3" style="width:130px;">
                                   <option value="0">    Grams               </option>
                                   <option value="1">    Cups                </option>
@@ -127,8 +136,7 @@
                             </div>
                         </div><br>
                         <div class="6u$(xsmall)" style="transform: translate(0px,0px);">
-                            <!-- <input type="checkbox" id="pause4">Pause</input> -->
-                            <input type="text" name="In4" id="email"style="width:128px; height:35px; transform: translate(0px,-2px);" placeholder="Quantity of Water" /> 
+                            <input type="text" name="In4" id="email"style="width:155px; transform: translate(0px,-2px);" placeholder="Quantity of Milk" /> 
                             <select id="units4" name="units4" style="width:130px;">
                                   <option value="0">    Grams               </option>
                                   <option value="1">    Cups                </option>
@@ -149,6 +157,7 @@
                         </div><br>
                     <li id="printer" style ="text-align: center; text-decoration: none; list-style:none; transform: translate(20px,0px); border-top:0;"><a href="#one" class="button special" onclick="printer()">PRINT</a></li>
                     <p id="input1err" style="text-align:center; color:red;" class ="err"></p>
+                    <p id="input2err" style="text-align:center; color:red;" class ="err"></p>
 
             <div>
                 </form>
@@ -264,8 +273,8 @@
                 if(q[i]){
                   var j = 1 + i;
                     if(document.getElementById("pause"+j).checked){
-                        var p = "P";
-                    } else {p  = "N";}
+                        var p = "1";
+                    } else {p  = "0";}
                     ctrlword += i + "," + q[i] + "," + p + ",";   
                     }
                 }
@@ -274,6 +283,7 @@
                 // console.log("control word = " + ctrlword);
                 // console.log("pause val = " + document.getElementById("pause1").checked);
             document.getElementById("input1err").innerHTML = "control word = " + ctrlword;
+            // document.getElementById("input1err").innerHTML = "Printed!";
 
             var success = function() {
             console.log("success");
@@ -285,16 +295,24 @@
                 alert("Failed writing data to Bluetooth peripheral");
             };
 
-            var data = ctrlword;//messageInput.value;
-            bluetoothSerial.write(data, success, failure);
+            var data1; //messageInput.value;
+            var data2;
+            if (ctrlword.length > 20){
+              data2 = ctrlword.slice(20,ctrlword.length);
+              console.log("control word longer than character buffer: ");
+              data1 = ctrlword.slice(0,20);
+              console.log("data1: " + data1 + "\n data2:" + data2);
+            }
+            data = ctrlword;
+            bluetoothSerial.write(data1, success, failure);
+            bluetoothSerial.write(data2, success, failure);
+            // document.getElementById("input2err").innerHTML = bluetoothSerial.available(success,failure);
 }        
-
  }
 </script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/boostrap.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
