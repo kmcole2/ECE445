@@ -4,9 +4,19 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,  target-densitydpi=device-dpi" />
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Bluetooth Serial Chat</title>
+
+        <!-- <link rel="stylesheet" type="text/css" href="css/main.css" /> -->
+<!-- Latest compiled and minified CSS -->
+
+        <!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/primary.css" />
+        
+        <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+                <title>Bluetooth Serial Chat</title>
     </head>
     <body>
         <div class="app">
@@ -32,13 +42,14 @@
                         <header class="major">
                             <h2>Submit a custom Recipe</h2>
                         </header>
+                        <br>
+
                         <form id="form1" name="form1"type="text">
                         <div class="row uniform">
-                            <div class="6u$(xsmall)">
-                                <input type="text" name="In1" id="email" placeholder="Quantity of Flour" /> 
-                            </div>
-                            <div class="boxy 6u$(xsmall)" name="email" />
-                                <select id="units1" name="units1">
+                            <div class="col-sm-" style="transform: translate(0px,0px);">
+                                <input type="checkbox" id="pause1">Pause</input>
+                                <input type="text" name="In1" id="messageInput" style="width:108px; height:23px; transform: translate(0px,-2px);" placeholder="Quantity of Flour" /> 
+                                <select id="units1" name="units1" style="width:150px">
                                       <option value="0">    Grams               </option>
                                       <option value="1">    Cups                </option>
                                       <option value="2">    Ounces              </option>
@@ -46,72 +57,60 @@
                                       <option value="4">    Teaspoons           </option>
                                       <option value="5">    Pints               </option>
                                       <option value="6">    Quarts              </option>
-                                      <option value="7">  Liters                </option>
-                                      <option value="8">  Gallons               </option>
+                                      <option value="7">    Liters              </option>
+                                      <option value="8">    Gallons             </option>
                                 </select>
-                            </div>
-                <input type="checkbox" id="pause1">Pause<br>
-                            <div class="6u$(xsmall)">
-                                <input type="text" name="In2" id="email" placeholder="Quantity of Sugar" /> 
-                            </div>
-                            <div class="boxy 6u$(xsmall)" name="email" />
-                                <select id="units2" name="units2" >
+                            </div><br>
+                            <div class="6u$(xsmall)" style="transform: translate(0px,0px);">
+                                <input type="checkbox" id="pause2">Pause</input>
+                                <input type="text" name="In2" id="email"style="width:108px; height:23px; transform: translate(0px,-2px);" placeholder="Quantity of Sugar" /> 
+                                <select id="units2" name="units2"  style="width:150px">
                                       <option value="0">    Grams               </option>
                                       <option value="1">    Cups                </option>
-                                      <option value="2">    Ounces          </option>
-                                      <option value="3">    Tablespoons </option>
-                                      <option value="4">    Teaspoons       </option>
+                                      <option value="2">    Ounces              </option>
+                                      <option value="3">    Tablespoons         </option>
+                                      <option value="4">    Teaspoons           </option>
                                       <option value="5">    Pints               </option>
-                                      <option value="6">    Quarts          </option>
-                                        <option value="7">  Liters          </option>
-                                        <option value="8">  Gallons         </option>
+                                      <option value="6">    Quarts              </option>
+                                      <option value="7">    Liters              </option>
+                                      <option value="8">    Gallons             </option>
                                 </select>
-                            </div>
-                <input type="checkbox" id="pause2">Pause<br>
-
-                            <div class="6u$(xsmall)">
-                                <input type="text" name="In3" id="email" placeholder="Quantity of Milk" />  
-                            </div>
-                            <div class="boxy 6u$(xsmall)" name="email" />
-                                <select id="units3" name="units3">
+                            </div><br>
+                            <div class="6u$(xsmall)" style="transform: translate(0px,0px);">
+                                <input type="checkbox" id="pause3">Pause</input>
+                                <input type="text" name="In3" id="email"style="width:108px; height:23px; transform: translate(0px,-2px);" placeholder="Quantity of Milk" />  
+                                <select id="units3" name="units3" style="width:150px">
                                       <option value="0">    Grams               </option>
                                       <option value="1">    Cups                </option>
-                                      <option value="2">    Ounces          </option>
-                                      <option value="3">    Tablespoons </option>
-                                      <option value="4">    Teaspoons       </option>
+                                      <option value="2">    Ounces              </option>
+                                      <option value="3">    Tablespoons         </option>
+                                      <option value="4">    Teaspoons           </option>
                                       <option value="5">    Pints               </option>
-                                      <option value="6">    Quarts          </option>
-                                        <option value="7">  Liters          </option>
-                                        <option value="8">  Gallons         </option>
+                                      <option value="6">    Quarts              </option>
+                                      <option value="7">    Liters              </option>
+                                      <option value="8">    Gallons             </option>
                                 </select>
-                            </div>
-                <input type="checkbox" id="pause3">Pause<br>
-
-                            <div class="6u$(xsmall)">
-                                <input type="text" name="In4" id="email" placeholder="Quantity of Water" /> 
-                            </div>
-                            <div class="boxy 6u$(xsmall)" name="email" />
-                                <select id="units4" name="units4">
+                            </div><br>
+                            <div class="6u$(xsmall)" style="transform: translate(0px,0px);">
+                                <input type="checkbox" id="pause4">Pause</input>
+                                <input type="text" name="In4" id="email"style="width:108px; height:23px; transform: translate(0px,-2px);" placeholder="Quantity of Water" /> 
+                                <select id="units4" name="units4" style="width:150px">
                                       <option value="0">    Grams               </option>
                                       <option value="1">    Cups                </option>
-                                      <option value="2">    Ounces          </option>
-                                      <option value="3">    Tablespoons </option>
-                                      <option value="4">    Teaspoons       </option>
+                                      <option value="2">    Ounces              </option>
+                                      <option value="3">    Tablespoons         </option>
+                                      <option value="4">    Teaspoons           </option>
                                       <option value="5">    Pints               </option>
-                                      <option value="6">    Quarts          </option>
-                                        <option value="7">  Liters          </option>
-                                        <option value="8">  Gallons         </option>
+                                      <option value="6">    Quarts              </option>
+                                      <option value="7">    Liters              </option>
+                                      <option value="8">    Gallons             </option>
                                 </select>
-                            </div>
-                <input type="checkbox" id="pause4">Pause<br>
-
-                </div>
-                <div>
-                    <ul class="actions">
-                        <li><a href="#one" class="printer button special scrolly" onclick="printer()">Print</a></li>
-                    </ul>
-                </div>
+                            </div><br>
+                        <li id="printer" style ="text-align: center; text-decoration: none; list-style:none; transform: translate(0px,0px); border-top:0;"><a href="#one" class="button special" onclick="printer()">PRINT</a></li>
                         <p id="input1err" style="text-align:center; color:red;" class ="err"></p>
+
+                <div>
+
                     </form>
                     </div>
                 </div>
@@ -120,11 +119,9 @@
                     <div class="content">
                         <header class="major">
                             <h2>Select Recipe</h2>
-                    <span class="image fit primary"><img src="images/pic02.jpg" alt="" /></span>
-                    <span class="image fit primary"><img src="images/pic02.jpg" alt="" /></span>
                         </header>
                         <p>Submit a recipe from preapproved vendors.</p>
-                            <div class="12u"><input type="text" name="name" id="name" placeholder="Enter URL..." /></div>
+                            <div class="12u"><input type="text" name="name" id="name" style="width:150px;" placeholder="Enter URL..." /></div>
                         <ul class="icons-grid">
                             <li style="transform:translate(0px,20px);">
                                 <a href="http://www.epicurious.com/">
@@ -255,7 +252,9 @@
  }
 </script>
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/boostrap.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>

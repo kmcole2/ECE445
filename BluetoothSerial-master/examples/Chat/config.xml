@@ -7,10 +7,15 @@
     <author email="don.coleman@gmail.com" href="http://megster.com">
         Don Coleman
     </author>
+
+    <access origin="*" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="false" />
     <preference name="KeyboardShrinksView" value="true" />
     <preference name="DisallowOverscroll" value="true" />
+
+    <plugin name="NetworkStatus" value="CDVConnection" />
+
     <access origin="*" />
 </widget>
