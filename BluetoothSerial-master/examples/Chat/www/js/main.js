@@ -42,7 +42,6 @@ var app = {
         sendButton.addEventListener(TOUCH_START, this.sendData, false);
         disconnectButton.addEventListener(TOUCH_START, this.disconnect, false);
         deviceList.addEventListener('touchstart', this.connect, false);
-        printButton.addEventListener(TOUCH_START, this.printData, false);
 
     },
     onDeviceReady: function() {

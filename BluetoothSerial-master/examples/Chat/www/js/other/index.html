@@ -1,39 +1,33 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,  target-densitydpi=device-dpi" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
 
-        <!-- <link rel="stylesheet" type="text/css" href="css/main.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/main.css" /> -->
 <!-- Latest compiled and minified CSS -->
 
-        <!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/primary.css" />
 
-  <!--       <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
-        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/> -->
-        <link rel="stylesheet" type="text/css" href="css/primary.css" />
-        <!-- Latest compiled and minified CSS -->
-        <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
-                <title>Bluetooth Serial Chat</title>
-                <style>
-                .btn span.glyphicon {         
-  opacity: 0;       
-}
-.btn.active span.glyphicon {        
-  opacity: 1;       
-}
-      glyphicon{
+    <title>Ingredient Printer</title>
+    <style>
+      .btn span.glyphicon {   opacity: 0; }
+      .btn.active span.glyphicon {   opacity: 1; }
+      
+  /*    glyphicon{
           font-size: 3px;
           height:5px;
-      }
-                </style>
-    </head>
-    <body>
-<div class="app">
+      }*/
+    </style>
+  </head>
+<body>
+    <div class="app">
         <h1>Ingredient Printer</h1>
         <div id="mainPage">
             <ul id="deviceList">
@@ -152,10 +146,10 @@
 
             <div>
                 </form>
-                    </div>
                 </div>
+            </div>
 
-                            <a href="#three" style="transform: translate(0px,55px);"class="goto-next scrolly">Next</a>
+            <a href="#three" style="transform: translate(0px,30px);"class="goto-next scrolly">Next</a>
 <br>
 <br>
 <br>
@@ -163,7 +157,7 @@
 <br>
 <br>
 <br>
-       <section id="three" style="transform: translate(0px,-70px);">
+            <section id="three" style="transform: translate(0px,-70px);">
             <div class="container">
                 <div class="content">
                     <header class="major">
@@ -188,7 +182,7 @@
                     </div>
             </div>
         </section>
-        <script>
+    <script>
 // Currently Supported Units of measure: 
 // g = g
 // 125g = 1cup
@@ -200,103 +194,105 @@
 // 4Quart = 1Gal
 //4L = 1Gal
 //
-                                                 //g, cups,   oz,     Tbsp,    tsp,    pint,     quart,     liter, gallon
-    var flour_multiplier =  [1, 125,    28.35,  7.5,     3.13,   250,      500,       500,   2000];//Unit multiplier for
-    var sugar_multiplier =  [1, 200,    28.35,  14,      4,      100,      200,       200,   800];   
-    var milk_multiplier =   [1, 236.59, 29.5735,14.7868, 4.9289, 473.1765, 1000.0018, 946.353,3785.412];
-    var water_multiplier =  [1, 236.59, 29.5735,14.7868, 4.9289, 473.1765, 1000.0018, 946.353,3785.412];     
-    var units =["Grams", "Cups","Ounces","Tablespoons","Teaspoons","Pints","Quarts", "Liters", "Gallons"];
-    
-    function printer(){
-  var form1,i;
-        var q = []; //quantities
-        var arrnum = 0;//starting with zero
-        var select1,select2,select3,select4;
-        var ctrlword;
+                                             //g, cups,   oz,     Tbsp,    tsp,    pint,     quart,     liter, gallon
+var flour_multiplier =  [1, 125,    28.35,  7.5,     3.13,   250,      500,       500,   2000];//Unit multiplier for
+var sugar_multiplier =  [1, 200,    28.35,  14,      4,      100,      200,       200,   800];   
+var milk_multiplier =   [1, 236.59, 29.5735,14.7868, 4.9289, 473.1765, 1000.0018, 946.353,3785.412];
+var water_multiplier =  [1, 236.59, 29.5735,14.7868, 4.9289, 473.1765, 1000.0018, 946.353,3785.412];     
+var units =["Grams", "Cups","Ounces","Tablespoons","Teaspoons","Pints","Quarts", "Liters", "Gallons"];
 
-        form1=document.getElementById("form1");
+function printer(){
+var form1,i;
+    var q = []; //quantities
+    var arrnum = 0;//starting with zero
+    var select1,select2,select3,select4;
+    var ctrlword;
 
-            q[0] = form1.elements["In1"].value; //Ingredient1 Quantity
-            q[1] = form1.elements["In2"].value;
-            q[2] = form1.elements["In3"].value;
-            q[3] = form1.elements["In4"].value;
+    form1=document.getElementById("form1");
 
-        //FORM VALIDATION 
-      var numbers =  /^[-+]?[0-9]+\.[0-9]+$/; // /^[0-9]+$/;
+        q[0] = form1.elements["In1"].value; //Ingredient1 Quantity
+        q[1] = form1.elements["In2"].value;
+        q[2] = form1.elements["In3"].value;
+        q[3] = form1.elements["In4"].value;
 
-            //if no input, output error to user
-        if(!q[0] && !q[1] && !q[2] && !q[3]){
-            document.getElementById("input1err").innerHTML = "Error: No values entered, form invalid";
-            console.log(q[0]+ q[1]+ q[2]+ q[3]);
-        }
-        //if input values aren't integers, output error to user 
-        // else if((q[0] && !q[0].match(numbers)) || (q[1] && !q[1].match(numbers)) || (q[2] && !q[2].match(numbers)) || (q[3] && !q[3].match(numbers))){  
-        //     // if(q1console.log("not int");
-        //     document.getElementById("input1err").innerHTML ='Error: Please input positive quantity (ie. 1, 1.2, etc.)';  
-        //     document.form1.In1.focus();  
-        //     return false;  
-        // }  
-       //If quantity is specified, extract units of measure
-        else {
-                if(q[0]){
-                    select1 = form1.units1;                     //Units of measure
-                    q[0] = parseInt(q[0]*flour_multiplier[select1[select1.selectedIndex].value]);
-                    arrnum++;
+    //FORM VALIDATION 
+  var numbers =  /^[-+]?[0-9]+\.[0-9]+$/; // /^[0-9]+$/;
+
+        //if no input, output error to user
+    if(!q[0] && !q[1] && !q[2] && !q[3]){
+        document.getElementById("input1err").innerHTML = "Error: No values entered, form invalid";
+        console.log(q[0]+ q[1]+ q[2]+ q[3]);
+    }
+    //if input values aren't integers, output error to user 
+    // else if((q[0] && !q[0].match(numbers)) || (q[1] && !q[1].match(numbers)) || (q[2] && !q[2].match(numbers)) || (q[3] && !q[3].match(numbers))){  
+    //     // if(q1console.log("not int");
+    //     document.getElementById("input1err").innerHTML ='Error: Please input positive quantity (ie. 1, 1.2, etc.)';  
+    //     document.form1.In1.focus();  
+    //     return false;  
+    // }  
+   //If quantity is specified, extract units of measure
+    else {
+            if(q[0]){
+                select1 = form1.units1;                     //Units of measure
+                q[0] = parseInt(q[0]*flour_multiplier[select1[select1.selectedIndex].value]);
+                arrnum++;
+            }
+            if(q[1]){
+                select2 = form1.units2; 
+                q[1] = parseInt(q[1]*sugar_multiplier[select2[select2.selectedIndex].value]);
+                arrnum++;
+            }       
+            if(q[2]){
+                select3 = form1.units3; 
+                q[2] = parseInt(q[2]*milk_multiplier[select3[select3.selectedIndex].value]);
+                arrnum++;
+            }
+            if(q[3]){
+                select4 = form1.units4; 
+                q[3] = parseInt(q[3]*water_multiplier[select4[select4.selectedIndex].value]);
+                arrnum++;
+            }
+         var ctrlword = arrnum-1 + ",";
+
+         for(i = 0; i < 4; i ++){
+            if(q[i]){
+              var j = 1 + i;
+                if(document.getElementById("pause"+j).checked){
+                    var p = "P";
+                } else {p  = "N";}
+                ctrlword += i + "," + q[i] + "," + p + ",";   
                 }
-                if(q[1]){
-                    select2 = form1.units2; 
-                    q[1] = parseInt(q[1]*sugar_multiplier[select2[select2.selectedIndex].value]);
-                    arrnum++;
-                }       
-                if(q[2]){
-                    select3 = form1.units3; 
-                    q[2] = parseInt(q[2]*milk_multiplier[select3[select3.selectedIndex].value]);
-                    arrnum++;
-                }
-                if(q[3]){
-                    select4 = form1.units4; 
-                    q[3] = parseInt(q[3]*water_multiplier[select4[select4.selectedIndex].value]);
-                    arrnum++;
-                }
-             var ctrlword = arrnum-1 + ",";
+            }
+            ctrlword += "*";
+            // console.log(units[select1[select1.selectedIndex].value]);
+            // console.log("control word = " + ctrlword);
+            // console.log("pause val = " + document.getElementById("pause1").checked);
+        document.getElementById("input1err").innerHTML = "control word = " + ctrlword;
 
-             for(i = 0; i < 4; i ++){
-                if(q[i]){
-                  var j = 1 + i;
-                    if(document.getElementById("pause"+j).checked){
-                        var p = "P";
-                    } else {p  = "N";}
-                    ctrlword += i + "," + q[i] + "," + p + ",";   
-                    }
-                }
-                ctrlword += "*";
-                // console.log(units[select1[select1.selectedIndex].value]);
-                // console.log("control word = " + ctrlword);
-                // console.log("pause val = " + document.getElementById("pause1").checked);
-            document.getElementById("input1err").innerHTML = "control word = " + ctrlword;
+        var success = function() {
+        console.log("success");
+        resultDiv.innerHTML = resultDiv.innerHTML + "Sent: " + ctrlword + "<br/>";
+        resultDiv.scrollTop = resultDiv.scrollHeight;
+         };
 
-            var success = function() {
-            console.log("success");
-            resultDiv.innerHTML = resultDiv.innerHTML + "Sent: " + ctrlword + "<br/>";
-            resultDiv.scrollTop = resultDiv.scrollHeight;
-             };
+        var failure = function() {
+            alert("Failed writing data to Bluetooth peripheral");
+        };
 
-            var failure = function() {
-                alert("Failed writing data to Bluetooth peripheral");
-            };
-
-            var data = ctrlword;//messageInput.value;
-            bluetoothSerial.write(data, success, failure);
+        var data = ctrlword;//messageInput.value;
+        bluetoothSerial.write(data, success, failure);
 }        
 
- }
-</script>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/boostrap.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+}
+  </script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+        app.initialize();
+   </script>
+</body>
 </html>
