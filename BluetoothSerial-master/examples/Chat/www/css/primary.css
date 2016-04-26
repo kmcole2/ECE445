@@ -10,19 +10,15 @@ body {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 
     -webkit-touch-callout: none; -webkit-user-select: none;
-    }
-
+}
 h1 {
     text-align: center;
 }
-
-
 button {
     margin: 15px;
     -webkit-appearance:none;
     font-size: 1.2em;
 }
-
 input[type=text] {
     font-size: 0.6em;
     width: 45%;
@@ -47,13 +43,11 @@ input[type=text] {
     margin-top: 40px;
     font-size: 0.6em; /* undo 2em from parent */
 }
-
 ul {
     list-style: none;
     border-bottom: 1px solid #d3d3d3;
     text-align: left;
 }
-
 li {
     margin-left: -40px;
     padding: 5px;
@@ -63,14 +57,11 @@ li {
     font-size: 0.9em;
     text-decoration: none; 
 }
-
-
 button {
     -webkit-appearance: none;
     font-size: 1.5em;
     border-radius: 0;
 }
-
 #resultDiv {
     font: 16px "Source Sans", helvetica, arial, sans-serif;
     font-weight: 200;
@@ -81,22 +72,18 @@ button {
     text-align: left;
     overflow: auto;
 }
-
 #statusDiv {
     text-align: center;
     margin-top: 10px;
 }
-
 .fadein {
   opacity: 1;
   -webkit-transition: opacity 1s ease-in;
 }
-
 .fadeout {
   opacity: 0;
   -webkit-transition: opacity 1s ease-out;
 }
-
 /* iPhone 5s */
 @media screen and (device-aspect-ratio: 40/71) {
     h1 {
@@ -124,27 +111,18 @@ h2 {
     font-size: 25px;
     font-weight: 700;
 }
-
 ::-webkit-input-placeholder {
-   /*color: red;*/
    font-size: 13px;
 }
-
 :-moz-placeholder { /* Firefox 18- */
-   /*color: red; */
    font-size: 13px; 
 }
-
 ::-moz-placeholder {  /* Firefox 19+ */
-   /*color: red; */
    font-size: 13px; 
 }
-
 :-ms-input-placeholder {  
-   /*color: red;  */
    font-size: 13px;
 }
-
 .goto-next {
     -moz-transition: background-color 0.2s ease-in-out;
     -webkit-transition: background-color 0.2s ease-in-out;
@@ -172,4 +150,43 @@ a:-webkit-any-link {
     color: -webkit-link;
     text-decoration: underline;
     cursor: auto;
+}
+.btn span.glyphicon {         
+    opacity: 0;       
+}
+.btn.active span.glyphicon {        
+    opacity: 1;       
+}
+input {
+    line-height: 2em;
+}
+select, input{
+    /*margin: 50px;*/
+    border: 1px solid #111;
+    background: transparent;
+    /*width: 140px !important; */
+    padding: 3px 3px 3px 3px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    height: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+} 
+.elementToFadeInAndOut {
+    width:200px;
+    height: 200px;
+    background: red;
+    -webkit-animation: fadeinout 4s linear forwards;
+    animation: fadeinout 4s linear forwards;
+}
+
+@-webkit-keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
 }
